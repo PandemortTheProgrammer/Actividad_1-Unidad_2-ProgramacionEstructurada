@@ -4,30 +4,30 @@
     {
         static void Main(string[] args)
         {
-
-            string edad, cantidadPersonas;
+            //Variables sin validar y variable nombre
+            string edad, cantidadPersonas, nombre;
+            //Variables validadas
             int cantper, ed;
-            string nombre;
+            //Booleanos de validación de estructura repetitiva
             bool isValid, edIsValid;
             List<String> Listanommen = [];
             List<String> Listanommay = [];
             List<int> Listaedmen = [];
             List<int> Listaedmay = [];
+            Console.WriteLine("Bienvenido");
+            //Do-While para repetir la solicitud de una cantidad de personas a registrar válida
             do
             {
-
-
                 Console.WriteLine("¿Cuantas personas vas a registrar?");
                 cantidadPersonas = Console.ReadLine();
-                //cantidadPersonas
                 try
                 {
                     cantper = Convert.ToInt16(cantidadPersonas);
-                    isValid = false;
                     if (cantper > 0)
                     {
                         if (cantper == 1)
                         {
+                            isValid = false;
                             Console.WriteLine("Escribe el nombre de la persona");
                             nombre = Console.ReadLine();
                             do
@@ -37,17 +37,26 @@
                                 try
                                 {
                                     ed = Convert.ToInt16(edad);
-                                    edIsValid = false;
                                     if (ed > 0)
                                     {
                                         if (ed >= 18)
                                         {
                                             Console.WriteLine(nombre + " es mayor de edad con " + edad + " años");
                                         }
-                                        else
+                                        else if (ed != 1) 
                                         {
                                             Console.WriteLine(nombre + " es menor de edad con " + edad + " años");
+                                        } 
+                                        else
+                                        {
+                                            Console.WriteLine(nombre + " es menor de edad con " + edad + " año");
                                         }
+                                        edIsValid = false;
+                                    } 
+                                    else
+                                    {
+                                        Console.WriteLine("Valor inválido, por favor seleccione un valor superior a 0");
+                                        edIsValid = true;
                                     }
                                 }
                                 catch
@@ -59,6 +68,7 @@
                         }
                         else
                         {
+                            isValid = false;
                             for (int i = 1; i <= cantper; i++)
                             {
                                 Console.WriteLine("Ingrese el nombre de la persona " + i);
@@ -70,24 +80,27 @@
                                     try
                                     {
                                         ed = Convert.ToInt16(edad);
-                                        if (ed > 0)
+                                        if (ed >= 0)
                                         {
                                             if (ed >= 18)
                                             {
                                                 Listanommay.Add(nombre);
                                                 Listaedmay.Add(ed);
+                                                edIsValid = false;
                                             }
                                             else
                                             {
                                                 Listanommen.Add(nombre);
                                                 Listaedmen.Add(ed);
+                                                edIsValid = false;
                                             }
                                         }
                                         else
                                         {
-                                            Console.WriteLine("Edad inválida, no se registró");
+                                            Console.WriteLine("Edad inválida, no fue registrada, vuelva a intentarlo");
+                                            edIsValid = true;
                                         }
-                                        edIsValid = false;
+                                        
                                     }
                                     catch
                                     {
@@ -107,13 +120,12 @@
                             {
                                 Console.WriteLine(Listanommen[j] + " - " + Listaedmen[j]);
                             }
-
                         }
-
                     }
                     else
                     {
                         Console.WriteLine("Valor inválido");
+                        isValid = true;
                     }
                 }
                 catch
