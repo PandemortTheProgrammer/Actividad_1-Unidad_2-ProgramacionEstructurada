@@ -10,11 +10,12 @@
             int cantper, ed;
             //Booleanos de validación de estructura repetitiva
             bool isValid, edIsValid;
+            //Listas específicas
             List<string> Listanommen = [];
             List<string> Listanommay = [];
             List<int> Listaedmen = [];
             List<int> Listaedmay = [];
-
+            //Listas generales
             List<int> Listedgen = [];
             List<string> Listnomgen = [];
             Console.WriteLine("Bienvenido");
@@ -120,23 +121,32 @@
                                 } while (!edIsValid);
 
                             }
-                            Console.WriteLine("");
-                            Console.WriteLine("Lista de todas las personas registradas");
-                            for (int j = 0; j < Listedgen.Count; j++)
+                            if (Listedgen.Count != 0)
                             {
-                                Console.WriteLine(Listnomgen[j] + " - " + Listedgen[j]);
+                                Console.WriteLine("");
+                                Console.WriteLine("Lista de todas las personas registradas");
+                                for (int j = 0; j < Listedgen.Count; j++)
+                                {
+                                    Console.WriteLine(Listnomgen[j] + " - " + Listedgen[j]);
+                                }
                             }
-                            Console.WriteLine("");
-                            Console.WriteLine("Lista de personas mayores");
-                            for (int j = 0; j < Listaedmay.Count; j++)
+                            if (Listaedmay.Count != 0)
                             {
-                                Console.WriteLine(Listanommay[j] + " - " + Listaedmay[j]);
+                                Console.WriteLine("");
+                                Console.WriteLine("Lista de personas mayores");
+                                for (int j = 0; j < Listaedmay.Count; j++)
+                                {
+                                    Console.WriteLine(Listanommay[j] + " - " + Listaedmay[j]);
+                                }
                             }
-                            Console.WriteLine("");
-                            Console.WriteLine("Lista de personas menores");
-                            for (int j = 0; j < Listaedmen.Count; j++)
+                            if (Listaedmen.Count != 0)
                             {
-                                Console.WriteLine(Listanommen[j] + " - " + Listaedmen[j]);
+                                Console.WriteLine("");
+                                Console.WriteLine("Lista de personas menores");
+                                for (int j = 0; j < Listaedmen.Count; j++)
+                                {
+                                    Console.WriteLine(Listanommen[j] + " - " + Listaedmen[j]);
+                                }
                             }
                         }
                     }
